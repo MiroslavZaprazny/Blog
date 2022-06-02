@@ -46,9 +46,9 @@
 
             <div class="mt-10">
                 {{-- <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full"> --}}
-                    <form method="POST" action="/newsletter" class="lg:flex text-sm">
+                    <form method="POST" action="/newsletter" class="lg:flex justify-center">
                         @csrf
-                        <div class="lg:py-3 lg:px-5 flex items-center">
+                        <div class="lg:py-3 lg:px-5 flex items-center bg-gray-200 rounded-xl">
                             <label for="email" class="hidden lg:inline-block">
                                 <img src="/images/mailbox-icon.svg" alt="mailbox letter">
                             </label>
