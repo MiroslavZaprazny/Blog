@@ -1,10 +1,10 @@
 <div x-data="{show : false}" @click.away = "show = false">
     <button @click = "show = !show"
-     class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left lg:inline-flex">   
-     {{isset($currentCategory) ? $currentCategory->name : 'Categories'}}
- 
-     <x-down-arrow class=" absolute pointer-events-none" 
-     style="right: 12px;" width="22"/>
+        class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left lg:inline-flex">   
+        {{isset($currentCategory) ? $currentCategory->name : 'Categories'}}
+    
+        <x-down-arrow class=" absolute pointer-events-none" 
+        style="right: 12px;" width="22"/>
     </button>
     <div x-show="show" class="py-1 absolute bg-gray-100 mt-1 rounded-xl w-full z-50 max-h-52 overflow-auto" style="display:none;">
         @foreach ($categories as $category )

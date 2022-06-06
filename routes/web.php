@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
 
@@ -21,4 +23,13 @@ Route::post('/posts/{post:title}/comments', [PostCommentController::class, 'stor
 
 Route::post('/newsletter', NewsletterController::class);
 
-Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+Route::middleware('admin')->group(function () {
+    Route::get('admin/posts/create', [PostController::class, 'create']);
+    Route::post('admin/posts', [PostController::class, 'store']);
+    Route::get('admin/posts', [AdminPostController::class, 'index']);
+    Route::get('admin/posts/{post:id}/edit', [AdminPostController::class, 'edit']);
+    Route::patch('admin/posts/{post}', [AdminPostController::class, 'update']);
+    Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy']);
+    Route::get('admin/category/create', [CategoryController::class, 'create']);
+    Route::post('/admin/categories', [CategoryController::class, 'store']);
+});

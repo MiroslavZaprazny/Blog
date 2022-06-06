@@ -24,7 +24,10 @@
                     <a href="/login" class="text-sm font-bold uppercase text-blue-500 ml-6 mr-2">Login</a>
                 @else
                     <span class="text-sm font-bold pr-4">Welcome, {{auth()->user()->name}}</span>
-                    <form action="/logout" method="post" class="text-blue-500 font-bold text-sm uppercase">
+                    @admin
+                        <a href="/admin/posts" class="text-sm font-bold uppercase text-blue-500 mr-2 ml-3">All posts</a>
+                    @endadmin
+                    <form action="/logout" method="post" class="text-blue-500 font-bold text-sm uppercase ml-4">
                         @csrf
                         <button type="submit" class="font-bold uppercase">
                             Logout

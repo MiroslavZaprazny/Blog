@@ -14,7 +14,7 @@ class SessionController extends Controller
         return view('login.login-page');
     }
 
-public function store () {
+    public function store () {
         $data = request()->validate([
             'email'=>['required','email'],
             'password'=>['required']
