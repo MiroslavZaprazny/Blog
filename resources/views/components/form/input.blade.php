@@ -1,5 +1,5 @@
-@props(['name','type' => 'text',])
-<div class="mb-6">
+@props(['name','type' => 'text'])
+<div class="mb-5">
     <x-form.label name="{{$name}}"/>
     <input type="{{$type}}" name="{{$name}}" 
     class="border border-gray-500 rounded-xl w-full p-2"

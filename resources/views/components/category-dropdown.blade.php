@@ -9,7 +9,7 @@
     <div x-show="show" class="py-1 absolute bg-gray-100 mt-1 rounded-xl w-full z-50 max-h-52 overflow-auto" style="display:none;">
         @foreach ($categories as $category )
         <a href="/?category={{$category->name}}& {{http_build_query(request()->except('category','page'))}}" 
-            class="block text-left px-3 text-sm leading-6 
+            class="block text-left py-1 px-3 text-sm leading-6 
             hover:bg-blue-500 hover:text-white
             {{isset($currentCategory) && $currentCategory->id == $category->id ? "bg-blue-500 text-white" : ''}}
             ">
