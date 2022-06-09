@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+# Thanks for signing up!
 
-The body of your message.
+Feel free to delete this email, it is not important.
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Yours sincerely,<br>
 {{ config('app.name') }}
 @endcomponent
