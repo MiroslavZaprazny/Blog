@@ -3,6 +3,9 @@
         <main class="border max-w-lg mx-auto mt-10 bg-gray-100 p-6 rounded-xl">
             <h1 class="text-center font-bold text-xl">Login</h1>
             <form action="/login" method="post" class="mt-6">
+                @if (Session::has('isntVerified'))
+                <p class="text-red-500 text-xs pb-2">{{Session::get('isntVerified')}}</p>
+                @endif
                 @csrf
                 <div class="mb-6">
                     <label for="email" class="block mb-2 uppercase font-bold text-xs text-gray-700">

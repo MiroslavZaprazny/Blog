@@ -21,7 +21,15 @@ class DatabaseSeeder extends Seeder
             'username' => 'mirko',
             'email' => 'mirko@email.com',
             'password' => 'mirko123',
-            'picture' => 'pictures/JgZNvCOnuYsxYAkGgbSPj0DGtMqNIpuXYRC0Ehmp.jpg'
+            'picture' => 'pictures/JgZNvCOnuYsxYAkGgbSPj0DGtMqNIpuXYRC0Ehmp.jpg',
+            'is_verified' => 1
+        ]);
+        User::factory(1)->create([
+            'name' => 'petko',
+            'username' => 'petko',
+            'email' => 'petko@email.com',
+            'password' => 'petko123',
+            'is_verified' => 0
         ]);
     }
 }

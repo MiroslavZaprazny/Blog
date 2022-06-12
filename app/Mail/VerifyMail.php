@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class VerifyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,9 @@ class WelcomeMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +28,10 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome');
+        $link = "http://127.0.0.1:8000/verify?token=".$this->data->two_factor_code;
+        return $this->markdown('emails.verify',[
+            'data' => $this->data,
+            'link' => $link
+        ]);
     }
 }

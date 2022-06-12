@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Http\Request;
+
 class SessionController extends Controller
 {
     public function destroy() {
@@ -14,16 +17,21 @@ class SessionController extends Controller
         return view('login.login-page');
     }
 
-    public function store () {
-        $data = request()->validate([
-            'email'=>['required','email'],
-            'password'=>['required']
-        ]);
-
-        if(auth()->attempt($data)){
-            session()->flash('success','You are logged in');
-            return redirect('/');
+    public function store (Request $request) {
+       $user = User::where('email' , '=' ,$request->email)->first();
+        if($user->is_verified === 0)    
+        {
+            return back()->with(['isntVerified' => 'You have to verify your account before you can log in!']);
         }
-        return back()->withErrors(['email'=> 'Your provided credentials could not be verifid']);
+            $data = request()->validate([
+                'email'=>['required','email'],
+                'password'=>['required']
+            ]);
+    
+            if(auth()->attempt($data)){
+                session()->flash('success','You are logged in');
+                return redirect('/');
+            }
+            return back()->withErrors(['email'=> 'Your provided credentials could not be verifid']);
     }
 }
