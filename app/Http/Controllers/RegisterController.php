@@ -7,6 +7,7 @@ use App\Mail\VerifyMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Jobs\VerificationEmailJob;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 
@@ -33,7 +34,8 @@ class RegisterController extends Controller
             // event(new Registered($user));
             //auth()->login($user);
     
-            Mail::to($user->email)->send(new VerifyMail($user));
+            // Mail::to($user->email)->send(new VerifyMail($user));
+            dispatch(new VerificationEmailJob($user));
             session()->flash('success', 'Your account has been registered');
             return redirect('/pending-verification');
     }

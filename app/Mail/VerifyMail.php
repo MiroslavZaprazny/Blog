@@ -16,6 +16,8 @@ class VerifyMail extends Mailable
      *
      * @return void
      */
+    public $data;
+    
     public function __construct($data)
     {
         $this->data = $data;
@@ -28,7 +30,7 @@ class VerifyMail extends Mailable
      */
     public function build()
     {
-        $link = "http://127.0.0.1:8000/verify?token=".$this->data->two_factor_code;
+        $link = "http://127.0.0.1:8000/verify?token=" . $this->data->two_factor_code;
         return $this->markdown('emails.verify',[
             'data' => $this->data,
             'link' => $link

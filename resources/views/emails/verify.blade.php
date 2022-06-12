@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hello {{$data->name}}, please veri    fy your account!
+# Hello {{$data->name}}, please verify your account!
 
 Click the button to verify your account
 
