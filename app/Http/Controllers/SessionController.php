@@ -27,8 +27,10 @@ class SessionController extends Controller
                 'email'=>['required','email'],
                 'password'=>['required']
             ]);
+
+            $remember =  $request->has('remember') ? true : false;
     
-            if(auth()->attempt($data)){
+            if(auth()->attempt($data, $remember)){
                 session()->flash('success','You are logged in');
                 return redirect('/');
             }
