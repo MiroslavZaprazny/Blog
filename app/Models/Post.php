@@ -48,7 +48,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function favorite()
+    public function favoritePost()
     {
         return $this->belongsTo(FavoritePost::class);
     }

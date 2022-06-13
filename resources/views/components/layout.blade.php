@@ -32,8 +32,12 @@
                         class="text-sm font-bold uppercase text-blue-500 mr-2">
                         Profile
                     </a>
+                    <a href="/favorites/{{ auth()->user()->username }}"
+                        class="text-sm font-bold uppercase text-blue-500 ">
+                        Favorites
+                    </a>
                     @admin
-                        <a href="/admin/posts" class="text-sm font-bold uppercase text-blue-500 mr-2 ml-2">All posts</a>
+                        <a href="/admin/posts" class="text-sm font-bold uppercase text-blue-500 mr-1 ml-2">All posts</a>
                     @endadmin
                     <form action="/logout" method="post" class="text-blue-500 font-bold text-sm uppercase ml-2">
                         @csrf

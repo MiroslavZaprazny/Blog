@@ -41,7 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/update/{user:username}', [UserController::class, 'update']);
     Route::delete('/profile/delete/{user:username}', [UserController::class, 'destroy']);
     Route::get('user/passwordreset', [UserController::class, 'reset']);
-    Route::post('/add-to-favorites',[FavoritePostController::class,'index']);
+    Route::post('/add-to-favorites',[FavoritePostController::class,'create']);
+    Route::get('/favorites/{user:username}',[FavoritePostController::class,'index']);
 });
 
 Route::middleware('guest')->group(function () {

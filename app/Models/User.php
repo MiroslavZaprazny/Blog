@@ -55,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return $this->hasMany(Comment::class);
     }
 
-    public function favorites()
+    public function favoritePosts()
     {
         return $this->hasMany(FavoritePost::class);
     }
