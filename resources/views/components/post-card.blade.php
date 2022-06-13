@@ -15,10 +15,23 @@
 
         <div class="mt-8 flex flex-col justify-between">
             <header>
-                <div class="space-x-2">
-                    <a href="/?category={{ $post->category->name }}"
-                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                        style="font-size: 10px">{{ $post->category->name }}</a>
+                <div class="flex justify-between">
+                    <div class="space-x-2">
+                        <a href="/?category={{ $post->category->name }}"
+                            class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                            style="font-size: 10px">{{ $post->category->name }}</a>
+                    </div>
+                    <div class="space-x-2">
+                       <form action="/add-to-favorites" method="post">
+                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                        <input type="hidden" name="post_id" value="{{$post->id}}">
+                        @csrf
+                            <button type="submit" class="bg-blue-400 hover:bg-blue-500 
+                            text-white p-2 rounded-xl text-xs">
+                                Add to favorites
+                            </button>
+                       </form>
+                    </div>
                 </div>
 
                 <div class="mt-4">

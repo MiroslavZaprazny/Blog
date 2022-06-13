@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\FavoritePost;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\MustVerifyEmail;
-use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
@@ -52,6 +53,11 @@ class User extends Authenticatable implements MustVerifyEmailContract
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(FavoritePost::class);
     }
 
     // protected function generateTwoFactorCode()

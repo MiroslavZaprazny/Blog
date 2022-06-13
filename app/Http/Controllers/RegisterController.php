@@ -28,8 +28,7 @@ class RegisterController extends Controller
                     'password' => ['required', 'max:255', 'min:6', 'confirmed']
                 ])
             );
-            $user->two_factor_code = Str::random(40); 
-            $user->two_factor_expires_at = now()->addMinutes(10);
+            $user->two_factor_code = Str::random(40);
             $user->save();
             // event(new Registered($user));
             //auth()->login($user);

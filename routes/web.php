@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\FavoritePostController;
 use App\Http\Controllers\EmailVerificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PendingEmailVerificationController;
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/update/{user:username}', [UserController::class, 'update']);
     Route::delete('/profile/delete/{user:username}', [UserController::class, 'destroy']);
     Route::get('user/passwordreset', [UserController::class, 'reset']);
+    Route::post('/add-to-favorites',[FavoritePostController::class,'index']);
 });
 
 Route::middleware('guest')->group(function () {
