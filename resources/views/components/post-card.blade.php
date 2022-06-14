@@ -21,6 +21,7 @@
                             class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
                             style="font-size: 10px">{{ $post->category->name }}</a>
                     </div>
+                    @auth
                     <div class="space-x-2">
                        <form action="/add-to-favorites" method="post">
                         <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
@@ -31,7 +32,8 @@
                                 Add to favorites
                             </button>
                        </form>
-                    </div>
+                    </div>                          
+                    @endauth
                 </div>
 
                 <div class="mt-4">

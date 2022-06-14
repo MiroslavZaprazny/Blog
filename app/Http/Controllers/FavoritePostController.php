@@ -19,14 +19,23 @@ class FavoritePostController extends Controller
 
     public function index(User $user)
     {
-        $favPosts = FavoritePost::where(['user_id' => $user->id])->get();
+        // $favPosts = FavoritePost::where(['user_id' => $user->id])->get();
+        $favPosts = $user->favoritePosts;
 
         $posts = collect($favPosts)->map(function ($post) {
-            return $post = Post::where(['id' => $post->id])->first();
+            return $post = Post::where(['id' => $post->post_id])->first();
         });
 
         return view('favorites.index',[
             'posts' =>  $posts->toArray()
         ]);
+    }
+
+    public function delete(Request $request)
+    {
+        $favPost = FavoritePost::where(['post_id' => $request->post_id]);
+        $favPost->delete();
+
+        return redirect()->back();
     }
 }

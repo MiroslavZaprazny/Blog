@@ -13,11 +13,6 @@ class FavoritePost extends Model
 
     protected $guarded = [];
 
-    public function post()
-    {
-        return $this->belongsTo(Post::class);
-    }
-
     public function user()
     {
         return $this->hasMany(User::class);

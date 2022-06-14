@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('user/passwordreset', [UserController::class, 'reset']);
     Route::post('/add-to-favorites',[FavoritePostController::class,'create']);
     Route::get('/favorites/{user:username}',[FavoritePostController::class,'index']);
+    Route::delete('/favorites/delete/{post:id}',[FavoritePostController::class,'delete']);
 });
 
 Route::middleware('guest')->group(function () {
